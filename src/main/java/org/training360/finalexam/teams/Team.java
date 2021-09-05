@@ -16,6 +16,10 @@ import java.util.List;
 @Table(name = "teams")
 public class Team {
 
+    public Team(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +28,9 @@ public class Team {
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players = new ArrayList<>();
+
+    public void addPlayer(Player player) {
+        players.add(player);
+        player.setTeam(this);
+    }
 }

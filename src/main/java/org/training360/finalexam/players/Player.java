@@ -36,4 +36,8 @@ public class Player {
 
     @ManyToOne
     private Team team;
+
+    public boolean hasNoTeam() {
+        return team == null;
+    }
 }
